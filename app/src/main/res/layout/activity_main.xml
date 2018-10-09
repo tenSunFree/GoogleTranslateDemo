@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#356ac3"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/statusBarView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_padding_top"
+            android:background="#356ac3"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- 未點擊翻譯 -->
+                <LinearLayout
+                    android:id="@+id/originalLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- app:contentInsetStartWithNavigation="0dp", Remove margin in android toolbar icon -->
+                    <android.support.v7.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#4285f4"
+                        android:minHeight="?attr/actionBarSize"
+                        app:contentInsetStartWithNavigation="0dp"
+                        app:theme="@style/ToolbarColoredBackArrow">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left|center_vertical"
+                            android:layout_marginLeft="17dp"
+                            android:text="Google Translate"
+                            android:textColor="#ffffff"
+                            android:textSize="25sp"/>
+                    </android.support.v7.widget.Toolbar>
+
+                    <!-- 主要內容 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1000dp"
+                        android:background="#ffffff"
+                        android:orientation="vertical">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/icon_chinese_translation_into_english"/>
+                        </FrameLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#d5d5d5"/>
+
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/translationCardView"
+                            android:layout_width="match_parent"
+                            android:layout_height="180dp"
+                            android:transitionName="translationCardView"
+                            app:cardBackgroundColor="#ffffff"
+                            app:cardCornerRadius="0dp"
+                            app:cardElevation="3dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/icon_text_input_box"/>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <EditText
+                                        android:id="@+id/editText"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="16dp"
+                                        android:layout_marginTop="12dp"
+                                        android:background="@null"
+                                        android:hint="輕觸即可輸入文字"
+                                        android:textColorHint="#777777"
+                                        android:textCursorDrawable="@null"
+                                        android:textSize="22sp"/>
+                                </LinearLayout>
+
+                                <FrameLayout
+                                    android:id="@+id/translationFrameLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"/>
+                            </RelativeLayout>
+                        </android.support.v7.widget.CardView>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 已點擊翻譯 -->
+                <LinearLayout
+                    android:id="@+id/afterClickingLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAccent"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+            </RelativeLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <!-- Side Drawer -->
+    <LinearLayout
+        android:id="@+id/drawer_view"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/icon_side_drawer_top"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#80000000"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="33dp"
+                    android:src="@drawable/icon_avatar"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Google"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:text="google@gmail.com"
+                    android:textColor="#99ffffff"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:background="#ffffff">
+
+            <ListView
+                android:id="@+id/sideDrawerBottomListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:divider="@null"/>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v4.widget.DrawerLayout>
